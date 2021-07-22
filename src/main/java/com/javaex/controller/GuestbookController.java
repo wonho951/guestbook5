@@ -38,6 +38,7 @@ public class GuestbookController {
 		
 		//ModelAndView 에서 View 공간
 		return "/WEB-INF/views/list.jsp";
+		
 	}
 	
 	
@@ -50,7 +51,6 @@ public class GuestbookController {
 		GuestbookDao guestDao = new GuestbookDao();
 		
 		guestDao.guestInsert(guestVo);
-		
 		
 		return "redirect:/list";
 	}
