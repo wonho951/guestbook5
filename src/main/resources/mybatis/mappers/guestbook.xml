@@ -3,14 +3,15 @@
 
 <mapper namespace="guestbook">
 
+
 	<!-- 리스트 불러오는 쿼리문 -->
-	<select id = "selectList" resultType = "com.javaex.vo.GuestbookVo">
+	<select id="selectList" resultType="com.javaex.vo.GuestbookVo">
 		<![CDATA[
 			select  no, 
        				name,
         			password, 
         			content,
-        			reg_date 
+        			reg_date as regDate
 			from guestbook 
 			order by no asc
 		]]>
@@ -18,15 +19,17 @@
 
 
 	<!-- 방명록 등록하는 쿼리문 -->
-	<insert id = "guestInsert" parameterType="com.javaex.vo.GuestbookVo">
+	<!-- ppt에 컬럼명이랑 이름이랑 맞춰주는거 있는데 그거 말고 as로 별명 맞춰서 해도 시간은 나온다. -->
+	<!-- 아직 안배운거 건들다가 톰캣도 안켜지는 에러를 한시간이상 겪었다. 단순 오타문제지만 오타여도 잘 보는 습관을 들이자 오늘 일기끝-->
+	<insert id="guestInsert" parameterType="com.javaex.vo.GuestbookVo">
 		<![CDATA[
 			INSERT INTO guestbook
 			VALUES (
-	        		SEQ_GUESTBOOK_NO.nextval, 
-	        		#{name}, 
-	        		#{password}, 
-	        		#{content}, 
-	        		sysdate
+	        		SEQ_GUESTBOOK_NO.nextval,
+	        		#{name},
+	        		#{password},
+	        		#{content},
+	        		sysdate	
 			)
 		]]>
 	</insert>

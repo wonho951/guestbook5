@@ -29,8 +29,6 @@ public class GuestbookDao {
 		return guestList;
 	}
 	
-	
-	
 	//등록
 	public int guestInsert(GuestbookVo guestVo) {
 		System.out.println("[GuesbookCOntroller.add]");
