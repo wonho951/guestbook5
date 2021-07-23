@@ -67,7 +67,7 @@ public class GuestbookController {
 	public String delete(@ModelAttribute GuestbookVo guestVo) {	//비밀번호랑 일치해야하니까 vo로함
 		System.out.println("삭제");
 		
-		guestDao.guestDelete(guestVo);
+		//guestDao.guestDelete(guestVo);
 		System.out.println(guestVo);
 		
 		return "redirect:/list";

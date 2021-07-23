@@ -2,7 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="guestbook">
-	
-	
+
+	<!-- 리스트 불러오는 쿼리문 -->
+	<select id = "selectList" resultType = "com.javaex.vo.GuestbookVo">
+		<![CDATA[
+			select  no, 
+       				name,
+        			password, 
+        			content,
+        			reg_date 
+			from guestbook 
+			order by no asc
+		]]>
+	</select>
+
+
+	<!-- 방명록 등록하는 쿼리문 -->
+	<insert id = "guestInsert" parameterType="com.javaex.vo.GuestbookVo">
+		<![CDATA[
+			INSERT INTO guestbook
+			VALUES (
+	        		SEQ_GUESTBOOK_NO.nextval, 
+	        		#{name}, 
+	        		#{password}, 
+	        		#{content}, 
+	        		sysdate
+			)
+		]]>
+	</insert>
+
 
 </mapper>
