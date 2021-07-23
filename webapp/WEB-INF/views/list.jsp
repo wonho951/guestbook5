@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-		<form action = "/guestbook3/add" method = "post">
+		<form action = "${pageContext.request.contextPath }/add" method = "post">
 			<table border = "1">
 				<tr>
 					<td>이름</td>
@@ -35,7 +35,7 @@
 				<td>${guestList.no }</td>
 				<td>${guestList.name }</td>
 				<td>${guestList.regDate }</td>	
-				<td><a href="/guestbook3/deleteForm?no=${guestList.no }">삭제</a></td>
+				<td><a href="${pageContext.request.contextPath }/deleteForm?no=${guestList.no }">삭제</a></td>
 			</tr>
 	
 			<tr>

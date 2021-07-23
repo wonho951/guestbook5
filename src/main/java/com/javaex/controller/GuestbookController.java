@@ -2,13 +2,12 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.dao.GuestbookDao;
 import com.javaex.vo.GuestbookVo;
@@ -17,6 +16,8 @@ import com.javaex.vo.GuestbookVo;
 public class GuestbookController {
 	
 	//필드
+	@Autowired
+	private GuestbookDao guestDao;
 	//생성자
 	//메소드 g/s
 	//메소드 - 일반
@@ -27,7 +28,7 @@ public class GuestbookController {
 		System.out.println("리스트");
 		
 		//dao사용
-		GuestbookDao guestDao = new GuestbookDao();
+		//GuestbookDao guestDao = new GuestbookDao();
 		
 		//dao의 메소드로 데이터 가져오기
 		List<GuestbookVo> guestList = guestDao.getguestList();
@@ -47,8 +48,6 @@ public class GuestbookController {
 	public String add(@ModelAttribute GuestbookVo guestVo) {
 		System.out.println("등록");
 		System.out.println(guestVo);
-		
-		GuestbookDao guestDao = new GuestbookDao();
 		
 		guestDao.guestInsert(guestVo);
 		
@@ -71,32 +70,11 @@ public class GuestbookController {
 	public String delete(@ModelAttribute GuestbookVo guestVo) {	//비밀번호랑 일치해야하니까 vo로함
 		System.out.println("삭제");
 		
-		GuestbookDao guestDao = new GuestbookDao();
-		
 		guestDao.guestDelete(guestVo);
 		System.out.println(guestVo);
 		
 		return "redirect:/list";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
