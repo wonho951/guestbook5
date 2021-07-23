@@ -27,9 +27,6 @@ public class GuestbookController {
 	public String list(Model model) {
 		System.out.println("리스트");
 		
-		//dao사용
-		//GuestbookDao guestDao = new GuestbookDao();
-		
 		//dao의 메소드로 데이터 가져오기
 		List<GuestbookVo> guestList = guestDao.getguestList();
 		
