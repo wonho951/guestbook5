@@ -3,6 +3,7 @@
 
 <configuration>
     <typeAliases>
+    	<typeAlias alias="GuestbookVo" type="com.javaex.vo.GuestbookVo" />
     </typeAliases>
 
     <mappers>

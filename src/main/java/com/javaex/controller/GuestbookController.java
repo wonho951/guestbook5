@@ -52,6 +52,20 @@ public class GuestbookController {
 		return "redirect:/list";
 	}
 	
+	//등록2
+	@RequestMapping(value = "add2", method= {RequestMethod.GET,RequestMethod.POST})
+	public String add2(Model model, @RequestParam("no") int no,
+									@RequestParam("name") String name,
+									@RequestParam("password") String password,
+									@RequestParam("content") String content) {
+		
+		System.out.println("등록2");
+		
+		
+		
+		return "redirect:/list";
+	}
+	
 	
 	//삭제폼
 	@RequestMapping(value = "/deleteForm", method= {RequestMethod.GET,RequestMethod.POST})
@@ -62,6 +76,8 @@ public class GuestbookController {
 		return "deleteForm";
 	}
 	
+	
+	//삭제폼2	--> Map 사용안해도 될거같은데..??
 	@RequestMapping(value = "/deleteForm2", method= {RequestMethod.GET,RequestMethod.POST})
 	public String deleteForm2() {
 		System.out.println("삭제폼");
@@ -86,14 +102,11 @@ public class GuestbookController {
 	//삭제2 Map사용
 	@RequestMapping(value = "/delete2", method= {RequestMethod.GET,RequestMethod.POST})
 	public String delete2(Model model, @RequestParam("no") int no,
-									   @RequestParam("name") String name,
-									   @RequestParam("password") String password,
-									   @RequestParam("content") String content,
-									   @RequestParam("sysdate") String regDate) {
+									   @RequestParam("password") String password) {
 		
 		System.out.println("삭제2");
 		
-		guestDao.guestDelete2(no, name, password, content, regDate);
+		guestDao.guestDelete2(no, password);
 		
 		return "redirect:/list";
 		

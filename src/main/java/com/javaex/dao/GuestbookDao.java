@@ -55,9 +55,9 @@ public class GuestbookDao {
 		return guestVo;
 	}
 	
-	
+	/*
 	//삭제2
-	public int guestDelete2(int no, String name, String password, String content, String regDate) {
+	public String guestDelete2(int no, String name, String password, String content, String regDate) {
 		System.out.println("Dao : " + no + ", " + name + ", " + password + ", " + content + ", " + regDate);
 		
 		Map<String, Object> guestMap = new HashMap<String,Object>();
@@ -70,9 +70,22 @@ public class GuestbookDao {
 		int count = sqlSession.delete("guestbook.guestDelete2", guestMap);
 		System.out.println(count);
 		
+		return "";
+	}*/
+	
+	
+	public int guestDelete2(int no, String password) {
+		System.out.println("Dao : " + no  + ", " + password);
+		
+		Map<String, Object> guestMap = new HashMap<String,Object>();
+		guestMap.put("no", no);
+		guestMap.put("password", password);
+		
+		int count = sqlSession.delete("guestbook.guestDelete2", guestMap);
+		System.out.println(count);
+		
 		return count;
 	}
-	
 	
 	
 	/*
