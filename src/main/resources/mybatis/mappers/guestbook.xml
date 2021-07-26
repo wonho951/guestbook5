@@ -3,6 +3,14 @@
 
 <mapper namespace="guestbook">
 
+	<resultMap id="resultMapGuestbookVo" type = "com.javaex.vo.GuestbookVo">
+		<result column="no" property="no" />  
+		<result column="name" property="name" />
+	    <result column="password" property="password" />
+	    <result column="content" property="content" />	
+	    <result column="reg_date" property="regDate" />
+	</resultMap>
+
 
 	<!-- 리스트 불러오는 쿼리문 -->
 	<select id="selectList" resultType="com.javaex.vo.GuestbookVo">
@@ -33,6 +41,23 @@
 			)
 		]]>
 	</insert>
+	
+	
+	<!-- 등록 쿼리문2 -->
+	<insert id="guestInsert2" parameterType="Map">
+		<![CDATA[
+			INSERT INTO guestbook
+			VALUES (
+	        		SEQ_GUESTBOOK_NO.nextval,
+	        		#{name},
+	        		#{password},
+	        		#{content},
+	        		sysdate	
+			)
+		]]>
+	</insert>
+	
+	
 	
 	
 	<!-- 방명록 삭제 쿼리문 -->
