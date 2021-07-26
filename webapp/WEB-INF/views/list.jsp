@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-		<form action = "${pageContext.request.contextPath }/add" method = "post">
+		<form action = "${pageContext.request.contextPath }/add2" method = "post">
 			<table border = "1">
 				<tr>
 					<td>이름</td>

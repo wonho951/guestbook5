@@ -40,6 +40,25 @@ public class GuestbookDao {
 		
 		return 1;
 	}
+	
+	
+	//등록2
+	public int guestInsert2(String name, String password, String content) {
+		System.out.println("등록2");
+		System.out.println(name + ", " + password + ", " + content);
+		
+		Map<String, Object> guestMap = new HashMap<String, Object>();
+		guestMap.put("name", name);
+		guestMap.put("password", password);
+		guestMap.put("content", content);
+		
+		System.out.println(guestMap);
+		int count = sqlSession.insert("guestbook.guestInsert2", guestMap);
+		System.out.println(count);
+		
+		return 1;
+	}
+	
 
 	
 	
@@ -55,25 +74,8 @@ public class GuestbookDao {
 		return guestVo;
 	}
 	
-	/*
+	
 	//삭제2
-	public String guestDelete2(int no, String name, String password, String content, String regDate) {
-		System.out.println("Dao : " + no + ", " + name + ", " + password + ", " + content + ", " + regDate);
-		
-		Map<String, Object> guestMap = new HashMap<String,Object>();
-		guestMap.put("no", no);
-		guestMap.put("name", name);
-		guestMap.put("password", password);
-		guestMap.put("content", content);
-		guestMap.put("sysdate", regDate);
-		
-		int count = sqlSession.delete("guestbook.guestDelete2", guestMap);
-		System.out.println(count);
-		
-		return "";
-	}*/
-	
-	
 	public int guestDelete2(int no, String password) {
 		System.out.println("Dao : " + no  + ", " + password);
 		

@@ -54,14 +54,14 @@ public class GuestbookController {
 	
 	//등록2
 	@RequestMapping(value = "add2", method= {RequestMethod.GET,RequestMethod.POST})
-	public String add2(Model model, @RequestParam("no") int no,
-									@RequestParam("name") String name,
+	public String add2(Model model, @RequestParam("name") String name,
 									@RequestParam("password") String password,
 									@RequestParam("content") String content) {
 		
 		System.out.println("등록2");
+		System.out.println(name + "," + password + ", " + content);
 		
-		
+		guestDao.guestInsert2(name, password, content);
 		
 		return "redirect:/list";
 	}
