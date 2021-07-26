@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.dao.GuestbookDao;
 import com.javaex.vo.GuestbookVo;
@@ -35,7 +36,7 @@ public class GuestbookController {
 		model.addAttribute("guestList", guestList);
 		
 		//ModelAndView 에서 View 공간
-		return "/WEB-INF/views/list.jsp";
+		return "list";
 		
 	}
 	
@@ -58,7 +59,15 @@ public class GuestbookController {
 		System.out.println("삭제폼");
 		
 		//포워드
-		return "/WEB-INF/views/deleteForm.jsp";
+		return "deleteForm";
+	}
+	
+	@RequestMapping(value = "/deleteForm2", method= {RequestMethod.GET,RequestMethod.POST})
+	public String deleteForm2() {
+		System.out.println("삭제폼");
+		
+		//포워드
+		return "deleteForm2";
 	}
 	
 	
@@ -67,12 +76,28 @@ public class GuestbookController {
 	public String delete(@ModelAttribute GuestbookVo guestVo) {	//비밀번호랑 일치해야하니까 vo로함
 		System.out.println("삭제");
 		
-		//guestDao.guestDelete(guestVo);
+		
+		guestDao.guestDelete(guestVo);
 		System.out.println(guestVo);
 		
 		return "redirect:/list";
 	}
 	
+	//삭제2 Map사용
+	@RequestMapping(value = "/delete2", method= {RequestMethod.GET,RequestMethod.POST})
+	public String delete2(Model model, @RequestParam("no") int no,
+									   @RequestParam("name") String name,
+									   @RequestParam("password") String password,
+									   @RequestParam("content") String content,
+									   @RequestParam("sysdate") String regDate) {
+		
+		System.out.println("삭제2");
+		
+		guestDao.guestDelete2(no, name, password, content, regDate);
+		
+		return "redirect:/list";
+		
+	}
 	
 	
 }

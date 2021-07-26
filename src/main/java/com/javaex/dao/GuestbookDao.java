@@ -1,6 +1,8 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,39 @@ public class GuestbookDao {
 		return 1;
 	}
 
+	
+	
+	//삭제
+	public GuestbookVo guestDelete(GuestbookVo guestVo) {
+		System.out.println("[GuestbookController.delete]");
+		System.out.println(guestVo);
+		
+		sqlSession.delete("guestbook.guestDelete", guestVo);
+		
+		System.out.println(guestVo);
+		
+		return guestVo;
+	}
+	
+	
+	//삭제2
+	public int guestDelete2(int no, String name, String password, String content, String regDate) {
+		System.out.println("Dao : " + no + ", " + name + ", " + password + ", " + content + ", " + regDate);
+		
+		Map<String, Object> guestMap = new HashMap<String,Object>();
+		guestMap.put("no", no);
+		guestMap.put("name", name);
+		guestMap.put("password", password);
+		guestMap.put("content", content);
+		guestMap.put("sysdate", regDate);
+		
+		int count = sqlSession.delete("guestbook.guestDelete2", guestMap);
+		System.out.println(count);
+		
+		return count;
+	}
+	
+	
 	
 	/*
 	// 등록

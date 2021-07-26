@@ -35,7 +35,7 @@
 				<td>${guestList.no }</td>
 				<td>${guestList.name }</td>
 				<td>${guestList.regDate }</td>	
-				<td><a href="${pageContext.request.contextPath }/deleteForm?no=${guestList.no }">삭제</a></td>
+				<td><a href="${pageContext.request.contextPath }/deleteForm2?no=${guestList.no }">삭제</a></td>
 			</tr>
 	
 			<tr>
